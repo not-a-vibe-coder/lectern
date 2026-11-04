@@ -15,6 +15,10 @@ ARG FLUTTER_VERSION=3.44.2
 RUN git clone --depth 1 --branch "${FLUTTER_VERSION}" \
       https://github.com/flutter/flutter.git /opt/flutter
 ENV PATH=/opt/flutter/bin:/opt/flutter/bin/cache/dart-sdk/bin:${PATH}
+# Some builders (Render) run in a user namespace where tar, as root, cannot
+# restore the archive's original file owners. Flutter's cache downloads are
+# extracted with tar, so keep the extracted files owned by the current user.
+ENV TAR_OPTIONS=--no-same-owner
 RUN flutter config --no-analytics --no-cli-animations \
  && flutter precache --web
 
