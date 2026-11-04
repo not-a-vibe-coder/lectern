@@ -1,0 +1,65 @@
+name: lectern
+description: "Lecture notes and past questions for a course or department."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  dartus: ^0.4.1
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  go_router: ^18.1.0
+  http: ^1.6.0
+  qr: ^4.0.0
+  sui_wallet_web:
+    path: ../packages/sui_wallet_web
+  upload_recovery:
+    path: ../packages/upload_recovery
+  web: ^0.5.1
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+  stream_channel: ^2.1.4
+  # Real Ed25519 Sui signatures in the fake backend (the same sui package
+  # Dartus uses).
+  sui: ^0.5.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/brand/
+
+  fonts:
+    - family: Newsreader
+      fonts:
+        - asset: assets/fonts/Newsreader-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Newsreader-SemiBold.ttf
+          weight: 600
+    - family: Atkinson
+      fonts:
+        - asset: assets/fonts/AtkinsonHyperlegible-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/AtkinsonHyperlegible-Bold.ttf
+          weight: 700
+    - family: JetBrainsMono
+      fonts:
+        - asset: assets/fonts/JetBrainsMono-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/JetBrainsMono-SemiBold.ttf
+          weight: 600
+    # The CanvasKit engine downloads Roboto as its default fallback font
+    # unless a family named Roboto is bundled. This app sets its own fonts
+    # everywhere, so "Roboto" points at the UI font it already loads (same
+    # URL, so the browser serves it once) instead of a 404 on every load.
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/AtkinsonHyperlegible-Regular.ttf
+          weight: 400
