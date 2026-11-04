@@ -1,0 +1,25 @@
+# Render Blueprint: Render → New → Blueprint → pick this repo.
+# The first build takes 10 to 15 minutes (Flutter web + Dart server).
+services:
+  - type: web
+    name: lectern
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    branch: main
+    autoDeploy: true
+    healthCheckPath: /
+    disk:
+      name: lectern-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: PORT
+        value: "8091"
+      # Must be the exact URL Render gives the service, with no trailing slash.
+      - key: PUBLIC_BASE_URL
+        value: https://lectern.onrender.com
+      - key: SUI_CHAIN
+        value: testnet
+      - key: TRUST_PROXY
+        value: "true"
