@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- lectern:meta -->
+  <title>Lectern</title>
+  <meta name="description" content="Lecture notes and past questions for your course, shared by your course rep.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lectern">
+  <meta property="og:title" content="Lectern">
+  <meta property="og:description" content="Lecture notes and past questions for your course, shared by your course rep.">
+  <meta property="og:image" content="og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- /lectern:meta -->
+  <meta name="theme-color" content="#FBFAF5">
+  <meta name="color-scheme" content="light">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Lectern">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    html, body { margin: 0; height: 100%; background: #FBFAF5; }
+    #lectern-loader {
+      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+      background-color: #FBFAF5;
+      background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 31px, rgba(213,220,235,.7) 31px, rgba(213,220,235,.7) 32px);
+      transition: opacity .25s ease-out;
+      font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #444B60;
+    }
+    #lectern-loader::before { content: ""; position: absolute; top: 0; bottom: 0; left: 20px; border-left: 1.2px solid #E07A73; }
+    #lectern-loader .box { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 24px; }
+    #lectern-loader .bar { width: 160px; height: 6px; border-radius: 3px; background: #E9ECF8; overflow: hidden; }
+    #lectern-loader .bar span { display: block; width: 40%; height: 100%; background: #FFE45E; border-radius: 3px; animation: lt-swipe 1.1s ease-in-out infinite; }
+    @keyframes lt-swipe { 0% { transform: translateX(-100%); } 100% { transform: translateX(260%); } }
+    @media (prefers-reduced-motion: reduce) { #lectern-loader .bar span { animation: none; width: 100%; } }
+    #lectern-loader.done { opacity: 0; pointer-events: none; }
+    @font-face { font-family: "Newsreader"; font-weight: 600; font-display: swap; src: url(landing/fonts/Newsreader-SemiBold.woff2) format("woff2"); }
+    #lectern-loader .lockup { display: flex; align-items: center; gap: 14px; }
+    #lectern-loader .lockup img { border-radius: 13px; }
+    #lectern-loader .lockup span { font: 600 44px/1 "Newsreader", Georgia, serif; color: #141A2E; letter-spacing: -0.01em; }
+  </style>
+</head>
+<body>
+  <div id="lectern-loader" role="status" aria-live="polite">
+    <div class="box">
+      <div class="lockup"><img src="icons/Icon-192.png" width="56" height="56" alt=""><span>Lectern</span></div>
+      <div class="bar" aria-hidden="true"><span></span></div>
+      <div>Opening the shelf…</div>
+    </div>
+  </div>
+  <noscript>
+    <p style="font:16px/1.5 system-ui,sans-serif;color:#141A2E;max-width:32em;margin:2em auto;padding:0 16px">
+      Lectern needs JavaScript to open shelves and download files. Turn it on in your browser settings and reload this page.
+    </p>
+  </noscript>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var el = document.getElementById('lectern-loader');
+      if (!el) return;
+      el.classList.add('done');
+      setTimeout(function () { el.remove(); }, 300);
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
