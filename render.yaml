@@ -18,7 +18,7 @@ services:
         value: "8091"
       # Must be the exact URL Render gives the service, with no trailing slash.
       - key: PUBLIC_BASE_URL
-        value: https://lectern.onrender.com
+        value: https://lectern-q6t4.onrender.com
       - key: SUI_CHAIN
         value: mainnet
       - key: TRUST_PROXY
