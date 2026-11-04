@@ -20,6 +20,6 @@ services:
       - key: PUBLIC_BASE_URL
         value: https://lectern.onrender.com
       - key: SUI_CHAIN
-        value: testnet
+        value: mainnet
       - key: TRUST_PROXY
         value: "true"
